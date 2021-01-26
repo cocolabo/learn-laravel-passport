@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  web:
+    container_name: laravel_passport_web
+    build: ./php
+#    restart: unless-stopped
+    volumes:
+      - ../:/var/www/html:cached
+    working_dir: /var/www/html
+    ports:
+      - "${WEB_PORT}:8000"
+    command: php artisan serve --host 0.0.0.0
+  db:
+    image: mysql:8.0.23
+    container_name: laravel_passport_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my_app
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./db/conf.d:/etc/mysql/conf.d
+    ports:
+      - "${DB_PORT}:3306"
