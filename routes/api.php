@@ -24,4 +24,7 @@ Route::middleware('laravel.passport.client')->get('/client2', function (Request 
     return response('auth client for laravel passport');
 });
 
-//
+Route::middleware('laravel.passport.client')->get('/users/{userId}', function (Request $request, int $userId) {
+    return response('use id = '.$userId);
+});
+
