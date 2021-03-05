@@ -42,9 +42,12 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
-            'hash' => false,
+        ],
+        'api-lbb' => [
+            'driver' => 'passport',
+            'provider' => 'lbb',
         ],
     ],
 

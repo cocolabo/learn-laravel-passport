@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::middleware('laravel.passport.client')->get('/client1', function (Request $request) {
+    return $request->user();
+});
+Route::middleware('laravel.passport.client')->get('/client2', function (Request $request) {
+    return response('auth client for laravel passport');
+});
+
+Route::middleware('laravel.passport.client')->get('/users/{userId}', function (Request $request, int $userId) {
+    return response('use id = '.$userId);
+});
+
